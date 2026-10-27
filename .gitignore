@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+build/
+dist/
+installer/*.exe
+assets/icon.ico
+tests/media/
+*.spec

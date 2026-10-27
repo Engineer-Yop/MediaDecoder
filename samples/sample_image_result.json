@@ -1,0 +1,84 @@
+{
+  "file": {"name": "cafe_window_portrait.jpg", "size_bytes": 2841920, "extension": ".jpg"},
+  "kind": "image",
+  "meta": {"model": "claude-opus-5-5", "input_tokens": 3920, "output_tokens": 2210, "elapsed_s": 41.2},
+  "recipe": {
+    "title": "Golden-hour café window portrait, film-look grade",
+    "summary": "A 4:5 vertical portrait of a barista leaning on a café counter, lit by low warm sun through a window on the left, shot (or generated) with a shallow-depth-of-field 85 mm look, then graded warm with lifted shadows, soft film grain and a light vignette. Measured: 3456x4320, palette dominated by amber #D9A066 and espresso brown #3B2A22, warm temperature (R-B +31), left side 0.12 brighter than right, centre 3.4x sharper than edges, corners 0.78 of centre brightness.",
+    "likely_origin": "AI-generated (no EXIF camera data, no C2PA) then colour-graded; a real 85 mm photo is also plausible",
+    "confidence": "medium",
+    "style_keywords": ["golden hour", "window light", "shallow depth of field", "warm film grade", "editorial lifestyle", "Kodak Portra look"],
+    "steps": [
+      {
+        "number": 1,
+        "title": "Generate the base portrait",
+        "produces": "base_portrait.png - 4:5 vertical portrait with the final composition and lighting",
+        "tool": "Midjourney v7",
+        "tool_type": "ai_image",
+        "time_range": "",
+        "prompt": "editorial lifestyle portrait of a young barista with curly dark hair and a rust-coloured linen apron, leaning on a wooden café counter, holding a ceramic cup, soft smile, looking slightly off camera, warm low golden-hour sunlight streaming through a large window from the left, long soft shadows, dust motes in the light beam, blurred espresso machine and hanging pendant lamps in the background, 85mm lens at f/1.8, eye-level medium close-up, rule-of-thirds framing with the face on the upper-left third, shallow depth of field with creamy bokeh, colour palette amber #D9A066, espresso brown #3B2A22, cream #EFE3D0, muted teal accents #4E6E6A, Kodak Portra 400 film look, natural skin texture --ar 4:5 --style raw --v 7 --stylize 150",
+        "negative_prompt": "",
+        "command": "",
+        "settings": "Generate 4 variations, pick the one whose window light falls from the left and whose face sits on the upper-left third; upscale with 'Upscale (Subtle)'.",
+        "evidence": "No camera EXIF or lens data; left/right brightness bias +0.12 and warm R-B +31 indicate a warm key from the left; centre-vs-edge sharpness 3.4 implies shallow depth of field.",
+        "estimated": true
+      },
+      {
+        "number": 2,
+        "title": "Alternative: generate locally with Flux / Stable Diffusion",
+        "produces": "base_portrait.png - same shot from an open model",
+        "tool": "Flux.1 [dev] in ComfyUI (or SDXL in Automatic1111)",
+        "tool_type": "ai_image",
+        "time_range": "",
+        "prompt": "Editorial lifestyle photograph, 4:5 vertical. A young barista with curly dark hair and a rust linen apron leans on a wooden café counter holding a ceramic cup, soft smile, gaze slightly off camera. Warm low golden-hour sun pours through a large window on the left, long soft shadows, visible dust in the light beam. Background: out-of-focus espresso machine and pendant lamps with creamy bokeh. Shot on an 85mm lens at f/1.8, eye level, medium close-up, face on the upper-left third. Amber, espresso brown, cream and muted teal palette, Kodak Portra 400 colour, natural skin texture, fine grain.",
+        "negative_prompt": "cartoon, illustration, 3d render, oversaturated, harsh flash, plastic skin, extra fingers, deformed hands, text, watermark, cold blue light",
+        "command": "",
+        "settings": "Resolution 1728x2160 (4:5); sampler Euler, scheduler simple, 28 steps, guidance 3.5 (Flux) / CFG 6 (SDXL); seed random; then 2x upscale in step 3.",
+        "evidence": "Same visual cues as step 1; offered for users without Midjourney.",
+        "estimated": true
+      },
+      {
+        "number": 3,
+        "title": "Upscale to the delivered resolution",
+        "produces": "portrait_upscaled.png - 3456x4320",
+        "tool": "Real-ESRGAN (command line)",
+        "tool_type": "command_line",
+        "time_range": "",
+        "prompt": "",
+        "negative_prompt": "",
+        "command": "realesrgan-ncnn-vulkan.exe -i base_portrait.png -o portrait_upscaled.png -n realesrgan-x4plus -s 2",
+        "settings": "",
+        "evidence": "Delivered size 3456x4320 (14.9 MP) is exactly 2x a typical 1728x2160 4:5 generation.",
+        "estimated": true
+      },
+      {
+        "number": 4,
+        "title": "Warm film grade",
+        "produces": "portrait_graded.tif - final colour and tone",
+        "tool": "Adobe Lightroom Classic (or Camera Raw)",
+        "tool_type": "image_editor",
+        "time_range": "",
+        "prompt": "",
+        "negative_prompt": "",
+        "command": "",
+        "settings": "1. Basic: Temp +12, Tint +4, Exposure +0.15, Contrast -10, Highlights -35, Shadows +25, Whites -10, Blacks +18 (lifted, measured shadows p5 = 0.11).\n2. Tone Curve (Point): raise the black point to output 18, slight S-curve (input 64 -> 58, input 192 -> 200).\n3. Colour Mixer: Orange Saturation +8, Orange Luminance +6; Blue Hue -15, Blue Saturation -20 (pushes cool tones to muted teal).\n4. Colour Grading: Shadows hue 200 / sat 8, Highlights hue 40 / sat 14, Balance +20.\n5. Effects: Grain Amount 18, Size 25, Roughness 50; Post-Crop Vignette -14, Midpoint 40, Feather 70 (measured corners 0.78 of centre).",
+        "evidence": "Lifted blacks (0% clipped black), soft highlight roll-off (p95 0.86, 0.1% clipped white), warm/teal palette split and a measured vignette.",
+        "estimated": true
+      },
+      {
+        "number": 5,
+        "title": "Export for Instagram",
+        "produces": "cafe_window_portrait.jpg - 4:5 JPEG, sRGB",
+        "tool": "ImageMagick",
+        "tool_type": "command_line",
+        "time_range": "",
+        "prompt": "",
+        "negative_prompt": "",
+        "command": "magick portrait_graded.tif -colorspace sRGB -resize 3456x4320 -unsharp 0x0.8+0.6+0.02 -quality 92 -sampling-factor 4:2:0 -strip cafe_window_portrait.jpg",
+        "settings": "",
+        "evidence": "Output is a 3456x4320 baseline JPEG without an embedded camera profile.",
+        "estimated": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,275 @@
+# 15-second vertical matcha launch ad: 5 AI shots, beat-synced cuts, voice-over and bold captions
+
+**Source file:** `matcha_launch_ad.mp4`  
+**Likely origin:** AI video generator shots (smooth synthetic motion, no camera metadata, encoder Lavf) assembled in CapCut or FFmpeg with TTS voice-over and stock/AI music (confidence: medium)  
+**Style:** clean commercial, sunlit pastel, macro food, vertical social ad, beat-synced, bold captions
+
+> All steps are ESTIMATED reconstructions inferred from the finished file. The real creation process cannot be known for certain.
+
+A 1080x1920, 30 fps, 15.0 s vertical ad. Five shots in this order: whisking macro (00:00.00-00:02.40), pour into an iced glass (00:02.40-00:05.50), slow orbit of the glass on a sunlit table (00:05.50-00:09.10), person sipping by a window (00:09.10-00:12.20), and a packshot with logo text (00:12.20-00:15.00). All transitions are hard cuts; 4 of 4 cuts land on audio onsets of a 124 BPM lo-fi house track. A warm female voice-over (transcribed below) runs under white uppercase captions in the lower third.
+
+## Step 1: Create a look reference frame `ESTIMATED`
+
+- **Produces:** look_ref.png - a still that fixes palette, light and props for every shot
+- **Tool:** Midjourney v7
+
+**Prompt:**
+
+```text
+bright commercial product photo of an iced matcha latte in a tall clear glass on a pale oak table, soft morning sunlight from the right through sheer curtains, gentle shadows, pastel palette matcha green #8DB86B, cream #F4EEE1, oak #D8B88A, soft sage background #CFDCC4, minimal styling with a bamboo whisk and a ceramic bowl, clean airy mood, shallow depth of field --ar 9:16 --style raw --v 7
+```
+
+**Settings / actions:**
+
+```text
+Use this image as the style/first-frame reference (image prompt) for shots 2-6 so colour and light stay consistent.
+```
+
+*Evidence:* Every sampled frame shares the same 4-colour palette (green #8DB86B, cream #F4EEE1, oak #D8B88A, sage #CFDCC4) and right-side key light.
+
+## Step 2: Shot 1 - whisking macro `ESTIMATED`
+
+- **Time range:** 00:00.00-00:02.40
+- **Produces:** scene01.mp4 - 3 s clip (trimmed to 2.40 s)
+- **Tool:** Kling 2.x (image-to-video) or Runway Gen-4
+
+**Prompt:**
+
+```text
+Extreme close-up macro, top-down 60-degree angle: a bamboo whisk briskly whisks bright green matcha in a cream ceramic bowl, fine foam forming, tiny droplets catching soft sunlight from the right, shallow depth of field, static locked-off camera, fast energetic subject motion, clean commercial food look, pastel green and cream palette, 9:16 vertical, 3 seconds.
+```
+
+**Negative prompt:**
+
+```text
+camera shake, text, hands deformed, blurry foam, dark lighting
+```
+
+**Settings / actions:**
+
+```text
+Duration 5 s (trim later), aspect 9:16, motion intensity high, camera movement: none.
+```
+
+*Evidence:* Scene 1 camera motion measured 'static camera, with subject motion'; frames 1-2 show the whisk and bowl from above.
+
+## Step 3: Shot 2 - milk pour into iced glass `ESTIMATED`
+
+- **Time range:** 00:02.40-00:05.50
+- **Produces:** scene02.mp4 - clip trimmed to 3.10 s
+- **Tool:** Kling 2.x or Runway Gen-4
+
+**Prompt:**
+
+```text
+Side-on close-up at table height: oat milk is poured in a smooth stream into a tall clear glass filled with ice and bright green matcha, swirling clouds of cream and green, condensation on the glass, soft morning sunlight from the right, slow tilt down following the pour, pale oak table, sage background softly out of focus, premium beverage commercial, 9:16 vertical.
+```
+
+**Negative prompt:**
+
+```text
+spilling, extra glasses, text, warped glass
+```
+
+**Settings / actions:**
+
+```text
+Duration 5 s, camera movement: tilt down (slow), start frame = look_ref.png crop.
+```
+
+*Evidence:* Scene 2 measured 'tilt down (slow)'; mid-scene frame shows the milk swirl.
+
+## Step 4: Shot 3 - slow orbit of the finished drink `ESTIMATED`
+
+- **Time range:** 00:05.50-00:09.10
+- **Produces:** scene03.mp4 - clip trimmed to 3.60 s
+- **Tool:** Veo 3 / Luma Ray or Kling
+
+**Prompt:**
+
+```text
+Product hero shot: the finished iced matcha latte in a tall glass on a pale oak table next to a bamboo whisk, camera slowly orbits left around the glass at eye level while gently pushing in, sunlight from the right creates sparkling highlights on the ice and long soft shadows, sheer curtains glowing in the background, pastel sage and cream palette, crisp commercial look, 9:16 vertical, 4 seconds.
+```
+
+**Negative prompt:**
+
+```text
+fast motion, text, logo, people
+```
+
+**Settings / actions:**
+
+```text
+Duration 5 s, camera: orbit left + slight push-in.
+```
+
+*Evidence:* Scene 3 measured 'pan right (moderate), push-in / zoom in (slow)' - consistent with an orbit to the left around a centred subject.
+
+## Step 5: Shot 4 - person sipping by the window `ESTIMATED`
+
+- **Time range:** 00:09.10-00:12.20
+- **Produces:** scene04.mp4 - clip trimmed to 3.10 s
+- **Tool:** Kling 2.x or Runway Gen-4
+
+**Prompt:**
+
+```text
+Medium close-up of a young woman in a cream knit sweater sitting by a sunny window, she lifts the iced matcha latte and takes a sip through a paper straw, then smiles softly, warm morning backlight creating a rim light on her hair, sheer curtains, shallow depth of field, gentle handheld feel, lifestyle commercial, pastel sage and cream palette, 9:16 vertical.
+```
+
+**Negative prompt:**
+
+```text
+distorted face, extra fingers, text, dark room
+```
+
+**Settings / actions:**
+
+```text
+Duration 5 s, camera: subtle handheld drift.
+```
+
+*Evidence:* Scene 4 measured 'handheld / shaky' (low amplitude); frames show a person drinking by a window.
+
+## Step 6: Shot 5 - packshot background `ESTIMATED`
+
+- **Time range:** 00:12.20-00:15.00
+- **Produces:** scene05.mp4 - clip trimmed to 2.80 s (logo text added in step 9)
+- **Tool:** Kling 2.x or Runway Gen-4
+
+**Prompt:**
+
+```text
+Centered packshot: a matte sage-green matcha tin and the iced matcha latte side by side on a pale oak table against a plain soft sage wall, empty space in the upper third for a logo, very slow push-in, soft even morning light from the right, minimal premium commercial look, 9:16 vertical.
+```
+
+**Negative prompt:**
+
+```text
+text, letters, labels with words, clutter
+```
+
+**Settings / actions:**
+
+```text
+Duration 5 s, camera: push-in (slow). Keep the tin unlabeled; the brand text is overlaid later.
+```
+
+*Evidence:* Scene 5 measured 'push-in / zoom in (slow)'; the logo text is perfectly sharp and static while the image zooms, so it was overlaid in the edit.
+
+## Step 7: Voice-over `ESTIMATED`
+
+- **Time range:** 00:00.30-00:12.90
+- **Produces:** voiceover.mp3 - 12.6 s of speech
+- **Tool:** ElevenLabs (Text to Speech)
+
+**Prompt:**
+
+```text
+Slow down. Whisk up something good. Our ceremonial-grade matcha, ready in sixty seconds. Calm energy, all day long. Meet Morning Leaf - now in stores.
+```
+
+**Settings / actions:**
+
+```text
+Voice: warm, friendly adult female, mid-low pitch (measured median about 190 Hz), relaxed pace about 150 words per minute, light smile in the voice, American English. Stability 45%, Similarity 75%, Style 20%.
+```
+
+*Evidence:* Whisper transcript (language en, 0.98) with speech from 00:00.30 to 00:12.90; speaking rate 148 wpm.
+
+## Step 8: Music bed `ESTIMATED`
+
+- **Time range:** 00:00.00-00:15.00
+- **Produces:** music.mp3 - 15+ s instrumental at 124 BPM
+- **Tool:** Suno v4.5 (instrumental)
+
+**Prompt:**
+
+```text
+[Instrumental] lo-fi house, 124 BPM, warm Rhodes chords, soft four-on-the-floor kick, shaker, airy pad, bright and calm morning mood, short intro, clean ending on beat 1
+```
+
+**Settings / actions:**
+
+```text
+Style tags: lo-fi house, chill, morning, 124 bpm, instrumental. Trim to 15 s with a 0.5 s fade-out.
+```
+
+*Evidence:* Tempo estimate 123.8 BPM (confidence 0.71), steady kick onsets, spectral centroid 1.9 kHz, music under speech for the whole clip.
+
+## Step 9: Assemble the five shots with hard cuts `ESTIMATED`
+
+- **Time range:** 00:00.00-00:15.00
+- **Produces:** edit_silent.mp4 - 15.0 s, 1080x1920, 30 fps
+- **Tool:** FFmpeg
+
+**Command:**
+
+```powershell
+ffmpeg -i scene01.mp4 -i scene02.mp4 -i scene03.mp4 -i scene04.mp4 -i scene05.mp4 -filter_complex "[0:v]trim=0:2.40,setpts=PTS-STARTPTS,scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30,setsar=1[v0];[1:v]trim=0:3.10,setpts=PTS-STARTPTS,scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30,setsar=1[v1];[2:v]trim=0:3.60,setpts=PTS-STARTPTS,scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30,setsar=1[v2];[3:v]trim=0:3.10,setpts=PTS-STARTPTS,scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30,setsar=1[v3];[4:v]trim=0:2.80,setpts=PTS-STARTPTS,scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30,setsar=1[v4];[v0][v1][v2][v3][v4]concat=n=5:v=1:a=0[v]" -map "[v]" -c:v libx264 -crf 18 -preset medium -pix_fmt yuv420p edit_silent.mp4
+```
+
+**Settings / actions:**
+
+```text
+Cut points 2.40 s, 5.50 s, 9.10 s, 12.20 s each land on a kick of the 124 BPM track (one beat = 0.484 s).
+```
+
+*Evidence:* Scene detection found 4 hard cuts at 2.40/5.50/9.10/12.20 s (scores 0.62-0.88); 100% of cuts within 90 ms of an audio onset.
+
+## Step 10: Captions and packshot logo `ESTIMATED`
+
+- **Time range:** 00:00.30-00:15.00
+- **Produces:** edit_captioned.mp4 - burned-in captions and end-card text
+- **Tool:** FFmpeg (libass subtitles) - or CapCut Auto Captions with the 'Bold' preset
+
+**Command:**
+
+```powershell
+ffmpeg -i edit_silent.mp4 -vf "subtitles=captions.srt:force_style='FontName=Arial Black,FontSize=15,PrimaryColour=&H00FFFFFF,OutlineColour=&H00334422,BorderStyle=1,Outline=2,Shadow=0,Alignment=2,MarginV=230'" -c:v libx264 -crf 18 -pix_fmt yuv420p edit_captioned.mp4
+```
+
+**Settings / actions:**
+
+```text
+Save this as captions.srt (UTF-8) next to the video:
+
+1
+00:00:00,300 --> 00:00:01,600
+SLOW DOWN.
+
+2
+00:00:01,600 --> 00:00:03,700
+WHISK UP SOMETHING GOOD.
+
+3
+00:00:03,700 --> 00:00:07,200
+CEREMONIAL-GRADE MATCHA, READY IN 60 SECONDS.
+
+4
+00:00:07,200 --> 00:00:10,100
+CALM ENERGY, ALL DAY LONG.
+
+5
+00:00:12,200 --> 00:00:15,000
+MORNING LEAF\NNOW IN STORES
+```
+
+*Evidence:* White uppercase heavy sans-serif captions with a dark green outline in the lower third on frames 1-9; 'MORNING LEAF / NOW IN STORES' centred on the final frames.
+
+## Step 11: Mix voice-over and music, export final `ESTIMATED`
+
+- **Time range:** 00:00.00-00:15.00
+- **Produces:** matcha_launch_ad.mp4 - 1080x1920, 30 fps, H.264 + AAC, -14 LUFS
+- **Tool:** FFmpeg
+
+**Command:**
+
+```powershell
+ffmpeg -i edit_captioned.mp4 -i voiceover.mp3 -i music.mp3 -filter_complex "[1:a]adelay=300|300,volume=1.0[vo];[2:a]atrim=0:15,afade=t=out:st=14.5:d=0.5,volume=0.35[m];[vo][m]amix=inputs=2:duration=longest:dropout_transition=0,loudnorm=I=-14:TP=-1.5:LRA=11[a]" -map 0:v -map "[a]" -c:v copy -c:a aac -b:a 192k -ar 48000 -shortest -movflags +faststart matcha_launch_ad.mp4
+```
+
+*Evidence:* Source audio is AAC 48 kHz stereo at 192 kb/s; loudness -14.2 dBFS RMS with music about 10 dB under the voice.
+
+---
+*Generated by MediaDecoder 1.0.0 with claude-opus-5-5.*
